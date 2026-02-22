@@ -1,48 +1,20 @@
 <Header />
 
+{#each data.content.sections as section}
 <section>
     <div class="split">
-        <Slider slides={waitingSlides} />
+        <Slider slides={section.slides} />
     </div>
 
     <div class="split">
         <div class="info">
-            <h2>
-                Dogs and waiting
-            </h2>
-            <p>
-                Dogs are experts at waiting.
-                By the door, at the corner of the street, under the table while nothing happens.
-                This piece looks at the quiet moments we rarely photograph — the pauses where companionship is most visible.
-            </p>
-            <p>
-                <Button />
-            </p>
+            <h2> {section.title}</h2>
+            <p>{section.description}</p>
+            <p> <Button /> </p>
         </div>
     </div>
 </section>
-
-<section class="reverse">
-    <div class="split">
-        <Slider slides={learningSlides} />
-    </div>
-
-    <div class="split">
-        <div class="info">
-            <h2>
-                Learning the pace
-            </h2>
-            <p>
-                Walking with a dog means adjusting your rhythm.
-                Stops are frequent. Detours are mandatory. Progress is slow — and somehow better for it.
-                A small reflection on how dogs gently reshape our sense of time.
-            </p>
-            <p>
-                <Button />
-            </p>
-        </div>
-    </div>
-</section>
+{/each}
 
 <script lang="ts">
     import Slider from '$lib/components/slider.svelte'
@@ -50,43 +22,7 @@
     import Button from '$lib/components/button.svelte'
     import '../global.css'
 
-    const waitingSlides = [
-        {
-            src: 'images/waiting-1.jpg',
-            alt: 'Border collie waiting'
-        },
-        {
-            src: 'images/waiting-2.jpg',
-            alt: 'Dog waiting by the window'
-        },
-        {
-            src: 'images/waiting-3.jpg',
-            alt: 'A cute dog lying over grass'
-        },
-        {
-            src: 'images/waiting-4.jpg',
-            alt: 'Good boy waiting for food'
-        }
-    ]
-
-    const learningSlides = [
-        {
-            src: 'images/learning-1.jpg',
-            alt: 'sweaters 1'
-        },
-        {
-            src: 'images/learning-2.jpg',
-            alt: 'sweaters 2'
-        },
-        {
-            src: 'images/learning-3.jpg',
-            alt: 'sweaters 3'
-        },
-        {
-            src: 'images/learning-4.jpg',
-            alt: 'sweaters 4'
-        }
-    ]
+    export let data;
 </script>
 
 <style>
